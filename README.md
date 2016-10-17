@@ -15,16 +15,18 @@ to call a Node.js RESTful service.
 
 ## Software Requirements To Run Locally (there's a Docker option below as well)
 
-* Node.js 6.0.0 or higher
+* Node.js 6.5.0 or higher
 * MongoDB 3.2 or higher
 
 ### Running the Application Locally
 
 1. Install Node.js (6.5 or higher) and MongoDB (3.2 or higher) on your dev box
 
-1. Execute 'mongod' to start the MongoDB daemon if it's not already running
+1. Execute `mongod` to start the MongoDB daemon if it's not already running
 
-1. Install Nodemon: `npm install nodemon -g`
+1. Install Nodemon and Gulp: `npm install nodemon gulp -g`
+
+1. Run the following Gulp task to copy required Angular modules into the `public` folder: `gulp copy:libs`
 
 1. Run `npm install` to install app dependencies
 
@@ -34,11 +36,13 @@ to call a Node.js RESTful service.
 
 ## Running the Application with Docker
 
-1. Install Docker for Mac/Windows or Docker Toolbox - https://www.docker.com/products/overview
+1. Install Node.js (6.5 or higher) and Docker for Mac/Windows or Docker Toolbox - https://www.docker.com/products/overview
 
 1. Open `config/config.development.json` and change the host from `localhost` to `mongodb`
 
-1. Open a command prompt window
+1. Install Gulp: `npm install gulp -g`
+
+1. Run `gulp copy:libs`
 
 1. Run `npm install`
 
