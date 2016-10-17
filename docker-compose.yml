@@ -1,0 +1,34 @@
+# Run docker-compose build
+# Run docker-compose up
+# Live long and prosper
+
+version: '2'
+
+services:
+
+  node:
+    container_name: nodeapp
+    image: nodeapp
+    build:
+      context: .
+      dockerfile: .docker/node.development.dockerfile
+    volumes:
+      - .:/var/www/angular2noderestfulservice
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
+    networks:
+      - nodeapp-network
+      
+  #No authentication is provided here - just a demo! Read the Dockerfile
+  #for more information about adding authentication.
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    networks:
+      - nodeapp-network
+
+networks:
+  nodeapp-network:
+    driver: bridge
