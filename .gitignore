@@ -7,8 +7,8 @@ npm-debug.log
 .vs
 
 # Build Generated Files
-public/src/app/**/*.js
-public/src/app/**/*.js.map
+public/app/**/*.js
+public/app/**/*.js.map
 
 
 
