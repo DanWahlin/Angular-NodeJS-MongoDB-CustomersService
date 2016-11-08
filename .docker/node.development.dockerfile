@@ -2,15 +2,24 @@ FROM node:latest
 
 MAINTAINER Dan Wahlin
 
-ENV CONTAINER_PATH /var/www/angular2restfulservice
+WORKDIR   /var/www/angular2restfulservice
 
-WORKDIR   $CONTAINER_PATH
-
-RUN npm install supervisor -g 
+RUN npm install nodemon -g 
 
 EXPOSE 3000
 
-ENTRYPOINT ["supervisor", "server.js"]
+ENTRYPOINT ["nodemon", "server.js"]
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Build: docker build -f node.dockerfile -t danwahlin/node .
