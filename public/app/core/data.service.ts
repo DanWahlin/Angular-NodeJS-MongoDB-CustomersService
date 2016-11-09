@@ -75,7 +75,7 @@ export class DataService {
 
     deleteCustomer(id: string) : Observable<boolean> {
 
-        return this.http.delete(`${this.baseUrl}/${id}?_csrf=${this.csrfToken}`, this.getRequestOptions())
+        return this.http.delete(this.baseUrl + '/' + id, this.getRequestOptions())
                    .map((res: Response) => res.json())
                    .catch(this.handleError);
     }
