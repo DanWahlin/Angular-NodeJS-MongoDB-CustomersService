@@ -7,6 +7,7 @@ const express       = require('express'),
     session         = require('express-session'),
     errorhandler    = require('errorhandler'),
     csrf            = require('csurf'),
+    
     router          = require('./routes/router'),
     database        = require('./lib/database'),
     seeder          = require('./lib/dbSeeder'),
@@ -31,6 +32,9 @@ class Server {
     }
 
     initViewEngine() {
+        //Not currently using the view engine per se
+        //but added in case index.html needs to include
+        //server-generated content at some point.
         const hbs = exphbs.create({
             extname: '.hbs',
             defaultLayout: 'master'
