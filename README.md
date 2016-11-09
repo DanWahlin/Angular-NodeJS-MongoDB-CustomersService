@@ -22,6 +22,9 @@ to call a Node.js RESTful service.
 
 1. Install Node.js (6.5 or higher) and MongoDB (3.2 or higher) on your dev box
 
+    * Node.js: https://nodejs.org
+    * MongoDB: https://docs.mongodb.com/manual/installation
+
 1. Execute `mongod` to start the MongoDB daemon if it's not already running
 
 1. Install Nodemon and Gulp: `npm install nodemon gulp -g`
