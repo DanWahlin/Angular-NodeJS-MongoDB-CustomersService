@@ -16,6 +16,10 @@ export class DataService {
     csrfToken: string = null;
 
     constructor(private http: Http) { 
+        this.onInit();
+    }
+
+    onInit() {
         this.getCsrfToken();
     }
 
