@@ -29,7 +29,9 @@ to call a Node.js RESTful service.
 
 1. Install Nodemon and Gulp: `npm install nodemon gulp -g`
 
-1. Run the following Gulp task to copy required Angular modules into the `public` folder: `gulp copy:libs`
+1. Run the following Gulp task to copy required Angular modules into the `public` folder: 
+
+    `gulp copy:libs`
 
 1. Run `npm install` to install app dependencies
 
