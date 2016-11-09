@@ -41,23 +41,22 @@ class Server {
     }
 
     initExpressMiddleWare() {
-        // app.use(session({ 
-        //     secret: 'customermanagerdemo', 
-        //     saveUninitialized: true,
-        //     resave: true }));
         app.use(cookieParser());
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
+        app.use(session({ 
+            secret: 'customermanagerdemo', 
+            saveUninitialized: true,
+            resave: true })
+        );
         app.use(express.static(__dirname + '/public'));
         app.use(errorhandler());
-        // app.use(csrf());
+        app.use(csrf());
 
-        // app.use(function (req, res, next) {
-        //     var csrf = req.csrfToken();
-        //     res.cookie('XSRF-TOKEN', csrf);
-        //     res.locals._csrf = csrf;
-        //     next();
-        // });
+        app.use(function (req, res, next) {
+            res.locals._csrf = req.csrfToken();
+            next();
+        });
 
         process.on('uncaughtException', function (err) {
             if (err) console.log(err, err.stack);
@@ -86,8 +85,9 @@ class Server {
             //Set NODE_ENV to 'development' and uncomment the following if to only run
             //the seeder when in dev mode
             //if (process.env.NODE_ENV === 'development') {
-                seeder.init();
+            //  seeder.init();
             //} 
+            seeder.init();
         });
     }
 

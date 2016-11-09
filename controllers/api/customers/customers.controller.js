@@ -1,6 +1,6 @@
-var customersRepo = require('../../../lib/customersRepository'),
-    statesRepo = require('../../../lib/statesRepository'),
-    util = require('util');
+const customersRepo = require('../../../lib/customersRepository'),
+      statesRepo = require('../../../lib/statesRepository'),
+      util = require('util');
 
 class CustomersController {
 
@@ -65,12 +65,12 @@ class CustomersController {
 
     insertCustomer(req, res) {
         console.log('*** insertCustomer');
-        statesRepo.getState(req.body.stateId, function (err, state) {
+        statesRepo.getState(req.body.stateId, (err, state) => {
             if (err) {
                 console.log('*** statesRepo.getState error: ' + util.inspect(err));
                 res.json({ 'status': false });
             } else {
-                customersRepo.insertCustomer(req.body, state, function (err) {
+                customersRepo.insertCustomer(req.body, state, (err) => {
                     if (err) {
                         console.log('*** customersRepo.insertCustomer error: ' + util.inspect(err));
                         res.json(false);
@@ -92,12 +92,12 @@ class CustomersController {
             throw new Error('Customer and associated stateId required');
         }
 
-        statesRepo.getState(req.body.stateId, function (err, state) {
+        statesRepo.getState(req.body.stateId, (err, state) => {
             if (err) {
                 console.log('*** statesRepo.getState error: ' + util.inspect(err));
                 res.json({ 'status': false });
             } else {
-                customersRepo.updateCustomer(req.params.id, req.body, state, function (err) {
+                customersRepo.updateCustomer(req.params.id, req.body, state, (err) => {
                     if (err) {
                         console.log('*** updateCustomer error: ' + util.inspect(err));
                         res.json({ 'status': false });
@@ -113,7 +113,7 @@ class CustomersController {
     deleteCustomer(req, res) {
         console.log('*** deleteCustomer');
 
-        customersRepo.deleteCustomer(req.params.id, function (err) {
+        customersRepo.deleteCustomer(req.params.id, (err) => {
             if (err) {
                 console.log('*** deleteCustomer error: ' + util.inspect(err));
                 res.json({ 'status': false });

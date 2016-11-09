@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 
 //Grab everything with import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
@@ -13,8 +13,21 @@ import { ICustomer, IOrder, IState } from '../shared/interfaces';
 export class DataService {
   
     baseUrl: string = '/api/customers';
+    csrfToken: string = null;
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) { 
+        this.getCsrfToken();
+    }
+
+    getCsrfToken() {
+        return this.http.get('/api/tokens/csrf')
+                   .map((res: Response) => res.json().csrfToken)
+                   .catch(this.handleError)
+                   .subscribe((token: string) => {
+                       this.csrfToken = token;
+                   },
+                   (err) => console.log(err));
+    }
     
     getCustomers() : Observable<ICustomer[]> {
         return this.http.get(this.baseUrl)
@@ -47,7 +60,7 @@ export class DataService {
     }
 
     insertCustomer(customer: ICustomer) : Observable<ICustomer> {
-        return this.http.post(this.baseUrl, customer)
+        return this.http.post(this.baseUrl, customer, this.getRequestOptions())
                    .map((res: Response) => {
                        return res.json();
                    })
@@ -55,15 +68,23 @@ export class DataService {
     }
    
     updateCustomer(customer: ICustomer) : Observable<boolean> {
-        return this.http.put(this.baseUrl + '/' + customer._id, customer)
+        return this.http.put(this.baseUrl + '/' + customer._id, customer, this.getRequestOptions())
                    .map((res: Response) => res.json())
                    .catch(this.handleError);
     }
 
     deleteCustomer(id: string) : Observable<boolean> {
-        return this.http.delete(this.baseUrl + '/' + id)
+
+        return this.http.delete(`${this.baseUrl}/${id}?_csrf=${this.csrfToken}`, this.getRequestOptions())
                    .map((res: Response) => res.json())
                    .catch(this.handleError);
+    }
+
+    getRequestOptions() {
+        const options = new RequestOptions({
+            headers: new Headers({ 'csrf-token': this.csrfToken })
+        });
+        return options;
     }
     
     getStates(): Observable<IState[]> {

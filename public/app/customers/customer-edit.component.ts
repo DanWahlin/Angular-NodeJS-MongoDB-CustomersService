@@ -39,18 +39,30 @@ export class CustomerEditComponent implements OnInit {
     let id = this.route.snapshot.params['id'];
     if (id !== '0') {
       this.operationText = 'Update';
-      this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
-        //Quick and dirty clone used in case user cancels out of form
-        const cust = JSON.stringify(customer);
-        this.customer = JSON.parse(cust);
-      });
+      this.getCustomer(id);
     }
 
+    this.getStates();
+  }
+
+  getCustomer(id: string) {
+      this.dataService.getCustomer(id)
+        .subscribe((customer: ICustomer) => {
+          //Quick and dirty clone used in case user cancels out of form
+          const cust = JSON.stringify(customer);
+          this.customer = JSON.parse(cust);
+        },
+        (err) => console.log(err));
+  }
+
+  getStates() {
     this.dataService.getStates().subscribe((states: IState[]) => this.states = states);
   }
   
   submit() {
+
       if (this.customer._id) {
+
         this.dataService.updateCustomer(this.customer)
           .subscribe((status: boolean) => {
             if (status) {
@@ -59,8 +71,11 @@ export class CustomerEditComponent implements OnInit {
             else {
               this.errorMessage = 'Unable to save customer';
             }
-        });
+          },
+          (err) => console.log(err));
+
       } else {
+
         this.dataService.insertCustomer(this.customer)
           .subscribe((customer: ICustomer) => {
             if (customer) {
@@ -69,7 +84,9 @@ export class CustomerEditComponent implements OnInit {
             else {
               this.errorMessage = 'Unable to add customer';
             }
-        });
+          },
+          (err) => console.log(err));
+          
       }
   }
   
@@ -88,7 +105,8 @@ export class CustomerEditComponent implements OnInit {
           else {
             this.errorMessage = 'Unable to delete customer';
           }
-        });
+        },
+        (err) => console.log(err));
   }
 
 }

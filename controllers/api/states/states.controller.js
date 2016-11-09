@@ -1,5 +1,5 @@
-var statesRepo  = require('../../../lib/statesRepository'),
-    util        = require('util');
+const statesRepo  = require('../../../lib/statesRepository'),
+      util        = require('util');
 
 class StatesController {
 
