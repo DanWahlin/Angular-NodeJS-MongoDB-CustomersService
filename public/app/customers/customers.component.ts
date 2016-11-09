@@ -25,7 +25,7 @@ export class CustomersComponent implements OnInit {
   
   ngOnInit() {
     this.title = 'Customers';
-    this.getCustomersSummary(1);
+    this.getCustomersPage(1);
 
     // this.dataService.getCustomers()
     //     .subscribe((customers: ICustomer[]) => {
@@ -44,16 +44,16 @@ export class CustomersComponent implements OnInit {
     }
   }
 
-  getCustomersSummary(page: number) {
-    this.dataService.getCustomersPage(page - 1, this.pageSize)
+  pageChanged(page: number) {
+    this.getCustomersPage(page);
+  }
+
+  getCustomersPage(page: number) {
+    this.dataService.getCustomersPage((page - 1) * this.pageSize, this.pageSize)
         .subscribe((response: IPagedResults<ICustomer[]>) => {
           this.customers = this.filteredCustomers = response.results;
           this.totalRecords = response.totalRecords;
         });
-  }
-
-  pageChanged(page: number) {
-    this.getCustomersSummary(page);
   }
 
 }

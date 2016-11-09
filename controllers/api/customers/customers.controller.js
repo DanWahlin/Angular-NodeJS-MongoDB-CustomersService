@@ -33,8 +33,8 @@ class CustomersController {
         console.log('*** getCustomersPage');
         const topVal = req.params.top,
               skipVal = req.params.skip,
-              top = (isNaN(topVal)) ? 10 : +req.params.top,
-              skip = (isNaN(skipVal)) ? 0 : +req.params.skip;
+              top = (isNaN(topVal)) ? 10 : +topVal,
+              skip = (isNaN(skipVal)) ? 0 : +skipVal;
 
         customersRepo.getPagedCustomers(skip, top, (err, data) => {
             res.setHeader('X-InlineCount', data.count);

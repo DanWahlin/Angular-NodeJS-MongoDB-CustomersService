@@ -9,6 +9,7 @@ npm-debug.log
 # Build Generated Files
 public/app/**/*.js
 public/app/**/*.js.map
+public/lib
 
 
 
