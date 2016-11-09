@@ -2,7 +2,7 @@ FROM node:latest
 
 MAINTAINER Dan Wahlin
 
-WORKDIR   /var/www/angular2restfulservice
+WORKDIR /var/www/angular2noderestfulservice
 
 RUN npm install nodemon -g 
 

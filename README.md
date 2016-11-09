@@ -47,9 +47,9 @@ to call a Node.js RESTful service.
 
 1. Install Gulp: `npm install gulp -g`
 
-1. Run `gulp copy:libs`
-
 1. Run `npm install`
+
+1. Run `gulp copy:libs`
 
 1. Run `npm run tsc:w` to compile TypeScript to JavaScript locally (leave the window running). This is only needed when in "dev" mode.
 
