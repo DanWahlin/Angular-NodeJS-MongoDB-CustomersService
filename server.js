@@ -2,11 +2,12 @@ const express       = require('express'),
     exphbs          = require('express-handlebars'),
     hbsHelpers      = require('handlebars-helpers'),
     hbsLayouts      = require('handlebars-layouts'),
-    cookieParser    = require('cookie-parser'),
     bodyParser      = require('body-parser'),
     session         = require('express-session'),
     errorhandler    = require('errorhandler'),
     csrf            = require('csurf'),
+    morgan          = require('morgan'),
+    favicon         = require('serve-favicon'),
     
     router          = require('./routes/router'),
     database        = require('./lib/database'),
@@ -32,9 +33,6 @@ class Server {
     }
 
     initViewEngine() {
-        //Not currently using the view engine per se
-        //but added in case index.html needs to include
-        //server-generated content at some point.
         const hbs = exphbs.create({
             extname: '.hbs',
             defaultLayout: 'master'
@@ -45,7 +43,9 @@ class Server {
     }
 
     initExpressMiddleWare() {
-        app.use(cookieParser());
+        app.use(favicon(__dirname + '/public/images/favicon.ico'));
+        app.use(express.static(__dirname + '/public'));
+        app.use(morgan('dev'));
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
         app.use(session({ 
@@ -53,7 +53,6 @@ class Server {
             saveUninitialized: true,
             resave: true })
         );
-        app.use(express.static(__dirname + '/public'));
         app.use(errorhandler());
         app.use(csrf());
 
