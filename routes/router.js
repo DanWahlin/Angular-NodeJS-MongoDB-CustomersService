@@ -21,8 +21,7 @@ class Router {
             if (stat.isDirectory()) {
                 //Recursively walk-through folders
                 this.load(app, fullName);
-            }
-            else if (file.toLowerCase().indexOf('.js')) {
+            } else if (file.toLowerCase().indexOf('.js')) {
                 //Grab path to JavaScript file and use it to construct the route
                 let dirs = path.dirname(fullName).split(path.sep);
 
