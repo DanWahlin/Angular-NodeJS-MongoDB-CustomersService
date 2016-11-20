@@ -1,0 +1,88 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "@angular/upgrade@2.2.0",
+        "scope": "@angular",
+        "escapedName": "@angular%2fupgrade",
+        "name": "@angular/upgrade",
+        "rawSpec": "2.2.0",
+        "spec": "2.2.0",
+        "type": "version"
+      },
+      "/Users/danwahlin/Dropbox/Projects/GitHub/Angular2-NodeJS-MongoDB-CustomersService"
+    ]
+  ],
+  "_from": "@angular/upgrade@2.2.0",
+  "_id": "@angular/upgrade@2.2.0",
+  "_inCache": true,
+  "_location": "/@angular/upgrade",
+  "_nodeVersion": "6.7.0",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/upgrade-2.2.0.tgz_1479151729406_0.9772398241329938"
+  },
+  "_npmUser": {
+    "name": "angular",
+    "email": "angular-core+npm@google.com"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "@angular/upgrade@2.2.0",
+    "scope": "@angular",
+    "escapedName": "@angular%2fupgrade",
+    "name": "@angular/upgrade",
+    "rawSpec": "2.2.0",
+    "spec": "2.2.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@angular/upgrade/-/upgrade-2.2.0.tgz",
+  "_shasum": "29a5a71463eb036d96d23e2be30920f65b1cc19a",
+  "_shrinkwrap": null,
+  "_spec": "@angular/upgrade@2.2.0",
+  "_where": "/Users/danwahlin/Dropbox/Projects/GitHub/Angular2-NodeJS-MongoDB-CustomersService",
+  "author": {
+    "name": "angular"
+  },
+  "bugs": {
+    "url": "https://github.com/angular/angular/issues"
+  },
+  "dependencies": {},
+  "description": "Angular - the library for easing update from v1 to v2",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "29a5a71463eb036d96d23e2be30920f65b1cc19a",
+    "tarball": "https://registry.npmjs.org/@angular/upgrade/-/upgrade-2.2.0.tgz"
+  },
+  "homepage": "https://github.com/angular/angular#readme",
+  "license": "MIT",
+  "main": "bundles/upgrade.umd.js",
+  "maintainers": [
+    {
+      "name": "angular",
+      "email": "angular-core+npm@google.com"
+    }
+  ],
+  "module": "index.js",
+  "name": "@angular/upgrade",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "@angular/core": "2.2.0",
+    "@angular/compiler": "2.2.0",
+    "@angular/platform-browser": "2.2.0",
+    "@angular/platform-browser-dynamic": "2.2.0"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angular.git"
+  },
+  "scripts": {},
+  "typings": "index.d.ts",
+  "version": "2.2.0"
+}

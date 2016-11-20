@@ -1,0 +1,85 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "@angular/common@2.2.0",
+        "scope": "@angular",
+        "escapedName": "@angular%2fcommon",
+        "name": "@angular/common",
+        "rawSpec": "2.2.0",
+        "spec": "2.2.0",
+        "type": "version"
+      },
+      "/Users/danwahlin/Dropbox/Projects/GitHub/Angular2-NodeJS-MongoDB-CustomersService"
+    ]
+  ],
+  "_from": "@angular/common@2.2.0",
+  "_id": "@angular/common@2.2.0",
+  "_inCache": true,
+  "_location": "/@angular/common",
+  "_nodeVersion": "6.7.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/common-2.2.0.tgz_1479151679169_0.004400842823088169"
+  },
+  "_npmUser": {
+    "name": "angular",
+    "email": "angular-core+npm@google.com"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "@angular/common@2.2.0",
+    "scope": "@angular",
+    "escapedName": "@angular%2fcommon",
+    "name": "@angular/common",
+    "rawSpec": "2.2.0",
+    "spec": "2.2.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@angular/common/-/common-2.2.0.tgz",
+  "_shasum": "b52686eafd71e053169ac0257f9135f9583247b6",
+  "_shrinkwrap": null,
+  "_spec": "@angular/common@2.2.0",
+  "_where": "/Users/danwahlin/Dropbox/Projects/GitHub/Angular2-NodeJS-MongoDB-CustomersService",
+  "author": {
+    "name": "angular"
+  },
+  "bugs": {
+    "url": "https://github.com/angular/angular/issues"
+  },
+  "dependencies": {},
+  "description": "Angular - commonly needed directives and services",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "b52686eafd71e053169ac0257f9135f9583247b6",
+    "tarball": "https://registry.npmjs.org/@angular/common/-/common-2.2.0.tgz"
+  },
+  "homepage": "https://github.com/angular/angular#readme",
+  "license": "MIT",
+  "main": "bundles/common.umd.js",
+  "maintainers": [
+    {
+      "name": "angular",
+      "email": "angular-core+npm@google.com"
+    }
+  ],
+  "module": "index.js",
+  "name": "@angular/common",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "@angular/core": "2.2.0"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angular.git"
+  },
+  "scripts": {},
+  "typings": "index.d.ts",
+  "version": "2.2.0"
+}

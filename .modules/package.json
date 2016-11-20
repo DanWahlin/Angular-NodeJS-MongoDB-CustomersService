@@ -1,0 +1,14 @@
+{
+  "name": "angular2-app-dev-course-code",
+  "version": "1.0.0",
+  "description": "Copies source code from destination folder into lab folders and overlays specific lab files.",
+  "author": "Dan Wahlin",
+  "scripts": {
+    "start": "node setup.js"
+  },
+  "dependencies": {
+    "fs-extra": "^0.30.0",
+    "request": "^2.75.0",
+    "adm-zip": "^0.4.7"
+  }
+}
