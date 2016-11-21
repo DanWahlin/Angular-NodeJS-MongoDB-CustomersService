@@ -6,54 +6,51 @@
       </h3>
   </header>
   <br />
-  <form (ngSubmit)="submit()" #customerForm="ngForm" class="editForm" novalidate>
+  <form [formGroup]="customerForm" (ngSubmit)="submit(customerForm)" class="editForm" novalidate>
     <div class="form-group">
       <label>Name</label>
-      <input type="text" class="form-control" name="firstName" [(ngModel)]="customer.firstName" #firstName="ngModel" required>
-      <div class="alert alert-danger" [hidden]="firstName.untouched || firstName.valid">First Name is required</div>
+      <input type="text" class="form-control" formControlName="firstName" />
+      <div class="alert alert-danger" [hidden]="customerForm.controls.firstName.untouched || customerForm.controls.firstName.valid">First Name is required</div>
     </div>
     <div class="form-group">
       <label>Last Name</label>
-      <input type="text" class="form-control" name="lastName" [(ngModel)]="customer.lastName" #lastName="ngModel" required>
-      <div class="alert alert-danger" [hidden]="lastName.untouched || lastName.valid">Last Name is required</div>
+      <input type="text" class="form-control" formControlName="lastName">
+      <div class="alert alert-danger" [hidden]="customerForm.controls.lastName.untouched || customerForm.controls.lastName.valid">Last Name is required</div>
     </div>
     <div class="form-group">
       <label>Gender</label>
       <br />
       <div class="radio">
         <label>
-          <input type="radio" name="gender" [(ngModel)]="customer.gender" #gender="ngModel" value="Male" required />
+          <input type="radio" name="gender" formControlName="gender" value="Male" />
           Male
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="gender" [(ngModel)]="customer.gender" #gender="ngModel" value="Female" required /> 
+          <input type="radio" name="gender" formControlName="gender" value="Female"  /> 
           Female
         </label>
       </div>
     </div>
     <div class="form-group">
       <label>Email</label>
-      <input type="email" class="form-control" name="email" [(ngModel)]="customer.email" #email="ngModel" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" />
-      <div class="alert alert-danger" [hidden]="email.untouched || email.valid">Email is required and must be valid</div>
+      <input type="email" class="form-control" formControlName="email" />
+      <div class="alert alert-danger" [hidden]="customerForm.controls.email.untouched || customerForm.controls.email.valid">Email is required and must be valid</div>
     </div>
     <div class="form-group">
       <label>Address</label>
-      <input type="text" class="form-control" name="address" [(ngModel)]="customer.address" #address="ngModel" required>
-      <div class="alert alert-danger" [hidden]="address.untouched || address.valid">Address is required</div>
+      <input type="text" class="form-control" formControlName="address" />
+      <div class="alert alert-danger" [hidden]="customerForm.controls.address.untouched || customerForm.controls.address.valid">Address is required</div>
     </div>
     <div class="form-group">
       <label>City</label>
-      <input type="text" class="form-control" name="city" [(ngModel)]="customer.city" #city="ngModel" required>
-      <div class="alert alert-danger" [hidden]="city.untouched || city.valid">City is required</div>
+      <input type="text" class="form-control" formControlName="city" />
+      <div class="alert alert-danger" [hidden]="customerForm.controls.city.untouched || customerForm.controls.city.valid">City is required</div>
     </div>
     <div class="form-group">
       <label>State</label>
-      <select class="form-control" 
-              [(ngModel)]="customer.stateId"
-              name="state" 
-              required>
+      <select class="form-control" formControlName="stateId">
           <option *ngFor="let state of states" [ngValue]="state.id">{{state.name}}</option>
       </select>
     </div>

@@ -7,7 +7,8 @@ export interface ICustomer {
     email: string;
     address: string;
     city: string;
-    state: IState;
+    state?: IState;
+    stateId: number;
     zip: number;
     gender: string;
     orderCount?: number;
