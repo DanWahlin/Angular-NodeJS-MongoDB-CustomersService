@@ -15,13 +15,10 @@ class CustomersController {
 
     getCustomers(req, res) {
         console.log('*** getCustomers');
-        const id = req.params.id;
         customersRepo.getCustomers((err, data) => {
             if (err) {
                 console.log('*** getCustomers error: ' + util.inspect(err));
-                res.json({
-                    customers: data.customers
-                });
+                res.json(null);
             } else {
                 console.log('*** getCustomers ok');
                 res.json(data.customers);
@@ -40,7 +37,7 @@ class CustomersController {
             res.setHeader('X-InlineCount', data.count);
             if (err) {
                 console.log('*** getCustomersPage error: ' + util.inspect(err));
-                res.json({ customers: null });
+                res.json(null);
             } else {
                 console.log('*** getCustomersPage ok');
                 res.json(data.customers);
@@ -50,12 +47,13 @@ class CustomersController {
 
     getCustomer(req, res) {
         console.log('*** getCustomer');
-        console.log(req.params.id);
+        const id = req.params.id;
+        console.log(id);
 
-        customersRepo.getCustomer(req.params.id, (err, customer) => {
+        customersRepo.getCustomer(id, (err, customer) => {
             if (err) {
                 console.log('*** getCustomer error: ' + util.inspect(err));
-                res.json({ customer: null });
+                res.json(null);
             } else {
                 console.log('*** getCustomer ok');
                 res.json(customer);

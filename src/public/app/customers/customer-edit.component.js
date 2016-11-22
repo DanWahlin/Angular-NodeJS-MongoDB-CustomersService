@@ -28,6 +28,7 @@ var CustomerEditComponent = (function () {
                 abbreviation: '',
                 name: ''
             },
+            stateId: 0,
             zip: 0
         };
         this.operationText = 'Insert';

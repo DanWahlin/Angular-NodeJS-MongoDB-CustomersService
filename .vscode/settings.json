@@ -1,9 +1,0 @@
-// Place your settings in this file to overwrite default and user settings.
-{
-    "files.exclude": {
-      "src/public/app/**/*.js.map": true,
-      "src/public/app/**/*.js": true
-    }
-,
-"typescript.tsdk": "./node_modules/typescript/lib"
-}

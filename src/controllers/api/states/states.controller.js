@@ -14,7 +14,7 @@ class StatesController {
             if (err) {
                 console.log('*** getStates error: ' + util.inspect(err));
                 res.json({
-                    states: data
+                    states: null
                 });
             } else {
                 console.log('*** getStates ok');
