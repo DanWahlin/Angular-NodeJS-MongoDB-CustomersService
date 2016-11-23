@@ -66,15 +66,15 @@ class CustomersController {
         statesRepo.getState(req.body.stateId, (err, state) => {
             if (err) {
                 console.log('*** statesRepo.getState error: ' + util.inspect(err));
-                res.json({ 'status': false });
+                res.json({ status: false, error: 'State not found', customer: null });
             } else {
-                customersRepo.insertCustomer(req.body, state, (err) => {
+                customersRepo.insertCustomer(req.body, state, (err, customer) => {
                     if (err) {
                         console.log('*** customersRepo.insertCustomer error: ' + util.inspect(err));
-                        res.json(false);
+                        res.json({status: false, error: 'Insert failed', customer: null});
                     } else {
                         console.log('*** insertCustomer ok');
-                        res.json(req.body);
+                        res.json({ status: true, error: null, customer: customer });
                     }
                 });
             }
@@ -93,15 +93,15 @@ class CustomersController {
         statesRepo.getState(req.body.stateId, (err, state) => {
             if (err) {
                 console.log('*** statesRepo.getState error: ' + util.inspect(err));
-                res.json({ 'status': false });
+                res.json({ status: false, error: 'State not found', customer: null });
             } else {
-                customersRepo.updateCustomer(req.params.id, req.body, state, (err) => {
+                customersRepo.updateCustomer(req.params.id, req.body, state, (err, customer) => {
                     if (err) {
                         console.log('*** updateCustomer error: ' + util.inspect(err));
-                        res.json({ 'status': false });
+                        res.json({ status: false, error: 'Update failed', customer: null });
                     } else {
                         console.log('*** updateCustomer ok');
-                        res.json({ 'status': true });
+                        res.json({ status: true, error: null, customer: customer });
                     }
                 });
             }

@@ -13,7 +13,7 @@ class CustomersRepository {
 
             Customer.find({}, (err, customers) => {
                 if (err) { 
-                    console.log(`*** CustomersRepository.getCustomers err: ${err}`); 
+                    console.log(`*** CustomersRepository.getCustomers error: ${err}`); 
                     return callback(err); 
                 }
                 callback(null, {
@@ -38,7 +38,7 @@ class CustomersRepository {
                     .limit(top)
                     .exec((err, customers) => {
                         if (err) { 
-                            console.log(`*** CustomersRepository.getPagedCustomers err: ${err}`); 
+                            console.log(`*** CustomersRepository.getPagedCustomers error: ${err}`); 
                             return callback(err); 
                         }
                         callback(null, {
@@ -75,7 +75,7 @@ class CustomersRepository {
         console.log('*** CustomersRepository.getCustomer');
         Customer.findById(id, (err, customer) => {
             if (err) { 
-                console.log(`*** CustomersRepository.getCustomer err: ${err}`); 
+                console.log(`*** CustomersRepository.getCustomer error: ${err}`); 
                 return callback(err); 
             }
             callback(null, customer);
@@ -87,7 +87,7 @@ class CustomersRepository {
         console.log('*** CustomersRepository.insertCustomer');
         console.log(state);
         var customer = new Customer();
-        var state = { 'id': state[0].id, 'abbreviation': state[0].abbreviation, 'name': state[0].name }
+        var newState = { 'id': state[0].id, 'abbreviation': state[0].abbreviation, 'name': state[0].name }
         console.log(body);
 
         customer.firstName = body.firstName;
@@ -95,15 +95,15 @@ class CustomersRepository {
         customer.email = body.email;
         customer.address = body.address;
         customer.city = body.city;
-        customer.state = state;
-        customer.stateId = state.id;
+        customer.state = newState;
+        customer.stateId = newState.id;
         customer.zip = body.zip;
         customer.gender = body.gender;
 
         customer.save((err, customer) => {
             if (err) { 
-                console.log(`*** CustomersRepository new customer save err: ${err}`); 
-                return callback(err); 
+                console.log(`*** CustomersRepository insertCustomer error: ${err}`); 
+                return callback(err, null); 
             }
 
             callback(null, customer);
@@ -113,11 +113,11 @@ class CustomersRepository {
     updateCustomer(id, body, state, callback) {
         console.log('*** CustomersRepository.editCustomer');
 
-        var s = { 'id': state[0].id, 'abbreviation': state[0].abbreviation, 'name': state[0].name }
+        var state = { 'id': state[0].id, 'abbreviation': state[0].abbreviation, 'name': state[0].name }
 
         Customer.findById(id, (err, customer)  => {
             if (err) { 
-                console.log(`*** CustomersRepository.editCustomer err: ${err}`); 
+                console.log(`*** CustomersRepository.editCustomer error: ${err}`); 
                 return callback(err); 
             }
 
@@ -126,19 +126,19 @@ class CustomersRepository {
             customer.email = body.email || customer.email;
             customer.address = body.address || customer.address;
             customer.city = body.city || customer.city;
-            customer.state = s;
-            customer.stateId = s.id;
+            customer.state = state;
+            customer.stateId = state.id;
             customer.zip = body.zip || customer.zip;
             customer.gender = body.gender || customer.gender;
 
 
-            customer.save((err) => {
+            customer.save((err, customer) => {
                 if (err) { 
-                    console.log(`*** CustomersRepository.editCustomer err: ${err}`); 
-                    return callback(err); 
+                    console.log(`*** CustomersRepository.updateCustomer error: ${err}`); 
+                    return callback(err, null); 
                 }
 
-                callback(null);
+                callback(null, customer);
             });
 
         });
@@ -148,27 +148,14 @@ class CustomersRepository {
     deleteCustomer(id, callback) {
         console.log('*** CustomersRepository.deleteCustomer');
         Customer.remove({ '_id': id }, (err, customer) => {
-            callback(null);
+            if (err) { 
+                console.log(`*** CustomersRepository.deleteCustomer error: ${err}`); 
+                return callback(err, null); 
+            }
+            callback(null, customer);
         });
     }
 
-    // get a  customer's email
-    checkUnique(id, property, value, callback) {
-        console.log('*** CustomersRepository.checkUnique');
-        console.log(id + ' ' + value)
-        switch (property) {
-            case 'email':
-                Customer.findOne({ 'email': value, 'id': { $ne: id} })
-                        .select('email')
-                        .exec((err, customer) => {
-                            console.log(customer)
-                            var status = (customer) ? false : true;
-                            callback(null, {status: status});
-                        });
-                break;
-        }
-
-    }
 }
 
 module.exports = new CustomersRepository();

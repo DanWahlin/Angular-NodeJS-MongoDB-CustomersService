@@ -66,13 +66,19 @@ var DataService = (function () {
     DataService.prototype.insertCustomer = function (customer) {
         return this.http.post(this.baseUrl, customer, this.getRequestOptions())
             .map(function (res) {
-            return res.json();
+            var data = res.json();
+            console.log('insertCustomer status: ' + data.status);
+            return data.customer;
         })
             .catch(this.handleError);
     };
     DataService.prototype.updateCustomer = function (customer) {
         return this.http.put(this.baseUrl + '/' + customer._id, customer, this.getRequestOptions())
-            .map(function (res) { return res.json(); })
+            .map(function (res) {
+            var data = res.json();
+            console.log('updateCustomer status: ' + data.status);
+            return data.customer;
+        })
             .catch(this.handleError);
     };
     DataService.prototype.deleteCustomer = function (id) {

@@ -66,14 +66,20 @@ export class DataService {
     insertCustomer(customer: ICustomer) : Observable<ICustomer> {
         return this.http.post(this.baseUrl, customer, this.getRequestOptions())
                    .map((res: Response) => {
-                       return res.json();
+                       const data = res.json();
+                       console.log('insertCustomer status: ' + data.status);
+                       return data.customer;
                    })
                    .catch(this.handleError);
     }
    
     updateCustomer(customer: ICustomer) : Observable<boolean> {
         return this.http.put(this.baseUrl + '/' + customer._id, customer, this.getRequestOptions())
-                   .map((res: Response) => res.json())
+                   .map((res: Response) => {
+                       const data = res.json();
+                       console.log('updateCustomer status: ' + data.status);
+                       return data.customer;
+                   })
                    .catch(this.handleError);
     }
 
