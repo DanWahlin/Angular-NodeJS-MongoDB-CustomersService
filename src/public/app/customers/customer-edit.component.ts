@@ -64,11 +64,10 @@ export class CustomerEditComponent implements OnInit {
       if (this.customer._id) {
 
         this.dataService.updateCustomer(this.customer)
-          .subscribe((status: boolean) => {
-            if (status) {
+          .subscribe((customer: ICustomer) => {
+            if (customer) {
               this.router.navigate(['/customers']);
-            }
-            else {
+            } else {
               this.errorMessage = 'Unable to save customer';
             }
           },

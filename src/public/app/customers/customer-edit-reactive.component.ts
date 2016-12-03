@@ -84,8 +84,8 @@ export class CustomerEditReactiveComponent implements OnInit {
       if (value._id) {
 
         this.dataService.updateCustomer(value)
-          .subscribe((status: boolean) => {
-            if (status) {
+          .subscribe((customer: ICustomer) => {
+            if (customer) {
               this.router.navigate(['/customers']);
             }
             else {

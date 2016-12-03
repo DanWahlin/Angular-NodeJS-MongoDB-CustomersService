@@ -73,7 +73,7 @@ export class DataService {
                    .catch(this.handleError);
     }
    
-    updateCustomer(customer: ICustomer) : Observable<boolean> {
+    updateCustomer(customer: ICustomer) : Observable<ICustomer> {
         return this.http.put(this.baseUrl + '/' + customer._id, customer, this.getRequestOptions())
                    .map((res: Response) => {
                        const data = res.json();
