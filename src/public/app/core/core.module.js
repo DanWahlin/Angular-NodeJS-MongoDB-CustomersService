@@ -32,7 +32,10 @@ var CoreModule = (function (_super) {
     CoreModule = __decorate([
         core_1.NgModule({
             imports: [http_1.HttpModule],
-            providers: [data_service_1.DataService, data_filter_service_1.DataFilterService, sorter_1.Sorter, trackby_service_1.TrackByService] // these should be singleton
+            providers: [
+                //Default XSRF provider setup (change cookie or header name if needed): 
+                //{ provide: XSRFStrategy, useValue: new CookieXSRFStrategy('XSRF-TOKEN', 'X-XSRF-TOKEN') },
+                data_service_1.DataService, data_filter_service_1.DataFilterService, sorter_1.Sorter, trackby_service_1.TrackByService] // these should be singleton
         }),
         __param(0, core_1.Optional()),
         __param(0, core_1.SkipSelf()), 

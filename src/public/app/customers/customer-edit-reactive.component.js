@@ -76,8 +76,8 @@ var CustomerEditReactiveComponent = (function () {
         // };
         if (value._id) {
             this.dataService.updateCustomer(value)
-                .subscribe(function (status) {
-                if (status) {
+                .subscribe(function (customer) {
+                if (customer) {
                     _this.router.navigate(['/customers']);
                 }
                 else {

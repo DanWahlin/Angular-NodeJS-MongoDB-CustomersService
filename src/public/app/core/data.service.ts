@@ -13,26 +13,11 @@ import { ICustomer, IOrder, IState } from '../shared/interfaces';
 export class DataService {
   
     baseUrl: string = '/api/customers';
-    csrfToken: string = null;
 
     constructor(private http: Http) { 
-        this.onInit();
-    }
 
-    onInit() {
-        this.getCsrfToken();
     }
-
-    getCsrfToken() {
-        return this.http.get('/api/tokens/csrf')
-                   .map((res: Response) => res.json().csrfToken)
-                   .catch(this.handleError)
-                   .subscribe((token: string) => {
-                       this.csrfToken = token;
-                   },
-                   (err) => console.log(err));
-    }
-    
+   
     getCustomers() : Observable<ICustomer[]> {
         return this.http.get(this.baseUrl)
                    .map((res: Response) => {
@@ -64,7 +49,7 @@ export class DataService {
     }
 
     insertCustomer(customer: ICustomer) : Observable<ICustomer> {
-        return this.http.post(this.baseUrl, customer, this.getRequestOptions())
+        return this.http.post(this.baseUrl, customer)
                    .map((res: Response) => {
                        const data = res.json();
                        console.log('insertCustomer status: ' + data.status);
@@ -74,7 +59,7 @@ export class DataService {
     }
    
     updateCustomer(customer: ICustomer) : Observable<ICustomer> {
-        return this.http.put(this.baseUrl + '/' + customer._id, customer, this.getRequestOptions())
+        return this.http.put(this.baseUrl + '/' + customer._id, customer) 
                    .map((res: Response) => {
                        const data = res.json();
                        console.log('updateCustomer status: ' + data.status);
@@ -84,14 +69,15 @@ export class DataService {
     }
 
     deleteCustomer(id: string) : Observable<boolean> {
-        return this.http.delete(this.baseUrl + '/' + id, this.getRequestOptions())
+        return this.http.delete(this.baseUrl + '/' + id)
                    .map((res: Response) => res.json().status)
                    .catch(this.handleError);
     }
 
     getRequestOptions() {
+        //Not needed since 
         const options = new RequestOptions({
-            headers: new Headers({ 'csrf-token': this.csrfToken })
+            headers: new Headers({ 'x-xsrf-token': this.csrfToken })
         });
         return options;
     }

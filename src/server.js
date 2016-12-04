@@ -3,6 +3,7 @@ const express       = require('express'),
     hbsHelpers      = require('handlebars-helpers'),
     hbsLayouts      = require('handlebars-layouts'),
     bodyParser      = require('body-parser'),
+    cookieParser    = require('cookie-parser'),
     session         = require('express-session'),
     errorhandler    = require('errorhandler'),
     csrf            = require('csurf'),
@@ -48,16 +49,19 @@ class Server {
         app.use(morgan('dev'));
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
-        app.use(session({ 
-            secret: 'customermanagerdemo', 
-            saveUninitialized: true,
-            resave: true })
-        );
+        // app.use(session({ 
+        //     secret: 'customermanagerdemo', 
+        //     saveUninitialized: true,
+        //     resave: true })
+        // );
         app.use(errorhandler());
-        app.use(csrf());
+        app.use(cookieParser());
+        app.use(csrf({ cookie: true }));
 
         app.use(function (req, res, next) {
-            res.locals._csrf = req.csrfToken();
+            var csrfToken = req.csrfToken();
+            res.locals._csrf = csrfToken;
+            res.cookie('XSRF-TOKEN', csrfToken);
             next();
         });
 

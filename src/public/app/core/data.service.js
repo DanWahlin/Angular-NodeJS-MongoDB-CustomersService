@@ -19,21 +19,7 @@ var DataService = (function () {
     function DataService(http) {
         this.http = http;
         this.baseUrl = '/api/customers';
-        this.csrfToken = null;
-        this.onInit();
     }
-    DataService.prototype.onInit = function () {
-        this.getCsrfToken();
-    };
-    DataService.prototype.getCsrfToken = function () {
-        var _this = this;
-        return this.http.get('/api/tokens/csrf')
-            .map(function (res) { return res.json().csrfToken; })
-            .catch(this.handleError)
-            .subscribe(function (token) {
-            _this.csrfToken = token;
-        }, function (err) { return console.log(err); });
-    };
     DataService.prototype.getCustomers = function () {
         var _this = this;
         return this.http.get(this.baseUrl)
@@ -64,7 +50,7 @@ var DataService = (function () {
             .catch(this.handleError);
     };
     DataService.prototype.insertCustomer = function (customer) {
-        return this.http.post(this.baseUrl, customer, this.getRequestOptions())
+        return this.http.post(this.baseUrl, customer)
             .map(function (res) {
             var data = res.json();
             console.log('insertCustomer status: ' + data.status);
@@ -73,7 +59,7 @@ var DataService = (function () {
             .catch(this.handleError);
     };
     DataService.prototype.updateCustomer = function (customer) {
-        return this.http.put(this.baseUrl + '/' + customer._id, customer, this.getRequestOptions())
+        return this.http.put(this.baseUrl + '/' + customer._id, customer)
             .map(function (res) {
             var data = res.json();
             console.log('updateCustomer status: ' + data.status);
@@ -82,13 +68,14 @@ var DataService = (function () {
             .catch(this.handleError);
     };
     DataService.prototype.deleteCustomer = function (id) {
-        return this.http.delete(this.baseUrl + '/' + id, this.getRequestOptions())
-            .map(function (res) { return res.json(); })
+        return this.http.delete(this.baseUrl + '/' + id)
+            .map(function (res) { return res.json().status; })
             .catch(this.handleError);
     };
     DataService.prototype.getRequestOptions = function () {
+        //Not needed since 
         var options = new http_1.RequestOptions({
-            headers: new http_1.Headers({ 'csrf-token': this.csrfToken })
+            headers: new http_1.Headers({ 'x-xsrf-token': this.csrfToken })
         });
         return options;
     };

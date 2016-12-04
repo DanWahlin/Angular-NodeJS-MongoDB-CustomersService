@@ -58,8 +58,8 @@ var CustomerEditComponent = (function () {
         var _this = this;
         if (this.customer._id) {
             this.dataService.updateCustomer(this.customer)
-                .subscribe(function (status) {
-                if (status) {
+                .subscribe(function (customer) {
+                if (customer) {
                     _this.router.navigate(['/customers']);
                 }
                 else {
