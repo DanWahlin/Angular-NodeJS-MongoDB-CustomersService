@@ -19,7 +19,10 @@ var DataService = (function () {
     function DataService(http) {
         this.http = http;
         this.baseUrl = '/api/customers';
+        this.onInit();
     }
+    DataService.prototype.onInit = function () {
+    };
     DataService.prototype.getCustomers = function () {
         var _this = this;
         return this.http.get(this.baseUrl)
@@ -72,10 +75,12 @@ var DataService = (function () {
             .map(function (res) { return res.json().status; })
             .catch(this.handleError);
     };
+    //Not used but could be called to pass "options" (3rd parameter) to 
+    //appropriate POST/PUT/DELETE calls made with http
     DataService.prototype.getRequestOptions = function () {
-        //Not needed since 
+        var csrfToken = ''; //would retrieve from cookie or from page
         var options = new http_1.RequestOptions({
-            headers: new http_1.Headers({ 'x-xsrf-token': this.csrfToken })
+            headers: new http_1.Headers({ 'x-xsrf-token': csrfToken })
         });
         return options;
     };

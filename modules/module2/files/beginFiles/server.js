@@ -3,13 +3,13 @@ const express       = require('express'),
     hbsHelpers      = require('handlebars-helpers'),
     hbsLayouts      = require('handlebars-layouts'),
     bodyParser      = require('body-parser'),
-    session         = require('express-session'),
+    cookieParser    = require('cookie-parser'),
     errorhandler    = require('errorhandler'),
     csrf            = require('csurf'),
     morgan          = require('morgan'),
     favicon         = require('serve-favicon'),
     
-
+    router          = require('./routes/router'),
     database        = require('./lib/database'),
     seeder          = require('./lib/dbSeeder'),
     app             = express(),
@@ -48,16 +48,14 @@ class Server {
         app.use(morgan('dev'));
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
-        app.use(session({ 
-            secret: 'customermanagerdemo', 
-            saveUninitialized: true,
-            resave: true })
-        );
         app.use(errorhandler());
-        app.use(csrf());
+        app.use(cookieParser());
+        app.use(csrf({ cookie: true }));
 
         app.use(function (req, res, next) {
-            res.locals._csrf = req.csrfToken();
+            var csrfToken = req.csrfToken();
+            res.locals._csrf = csrfToken;
+            res.cookie('XSRF-TOKEN', csrfToken);
             next();
         });
 
@@ -95,7 +93,7 @@ class Server {
     }
 
     initRoutes() {
-        
+
 
         // redirect all others to the index (HTML5 history)
         app.all('/*', function(req, res) {

@@ -4,7 +4,6 @@ const express       = require('express'),
     hbsLayouts      = require('handlebars-layouts'),
     bodyParser      = require('body-parser'),
     cookieParser    = require('cookie-parser'),
-    session         = require('express-session'),
     errorhandler    = require('errorhandler'),
     csrf            = require('csurf'),
     morgan          = require('morgan'),
@@ -49,11 +48,6 @@ class Server {
         app.use(morgan('dev'));
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
-        // app.use(session({ 
-        //     secret: 'customermanagerdemo', 
-        //     saveUninitialized: true,
-        //     resave: true })
-        // );
         app.use(errorhandler());
         app.use(cookieParser());
         app.use(csrf({ cookie: true }));
