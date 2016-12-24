@@ -52,7 +52,7 @@ export class CustomerEditComponent implements OnInit {
           const cust = JSON.stringify(customer);
           this.customer = JSON.parse(cust);
         },
-        (err) => console.log(err));
+        (err: any) => console.log(err));
   }
 
   getStates() {
@@ -71,7 +71,7 @@ export class CustomerEditComponent implements OnInit {
               this.errorMessage = 'Unable to save customer';
             }
           },
-          (err) => console.log(err));
+          (err: any) => console.log(err));
 
       } else {
 
@@ -84,7 +84,7 @@ export class CustomerEditComponent implements OnInit {
               this.errorMessage = 'Unable to add customer';
             }
           },
-          (err) => console.log(err));
+          (err: any) => console.log(err));
           
       }
   }

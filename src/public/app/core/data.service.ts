@@ -7,7 +7,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map'; 
 import 'rxjs/add/operator/catch';
 
-import { ICustomer, IOrder, IState } from '../shared/interfaces';
+import { ICustomer, IOrder, IState, IPagedResults } from '../shared/interfaces';
 
 @Injectable()
 export class DataService {
@@ -32,7 +32,7 @@ export class DataService {
                    .catch(this.handleError);
     }
 
-    getCustomersPage(page: number, pageSize: number) {
+    getCustomersPage(page: number, pageSize: number) : Observable<IPagedResults<ICustomer[]>> {
         return this.http.get(`${this.baseUrl}/page/${page}/${pageSize}`)
                     .map((res: Response) => {
                         const totalRecords = +res.headers.get('x-inlinecount');
