@@ -14,14 +14,6 @@ function copyIntoDirectories(srcDir, startDir, copyToSubFolderName, dirsToIgnore
 
         if (stat.isDirectory()) {
             if (dirsToIgnore.indexOf(dir) === -1) { //Make sure the ignoreDirs aren't involved in the copy operations
-                // var targetDir = directory + '/' + copyToSubFolderName, //Target directory src should be copied to
-                //     overlayFolder = (overlayFolder) ? overlayFolder : 'files';
-                //     filesOverlaySrc = directory + '/' + overlayFolder, //If no srcDir is provided then we're overlaying lab files into the targetDir
-                //     finalSrc = (srcDir) ? srcDir : filesOverlaySrc;
-
-                // fse.copySync(finalSrc, targetDir);
-                // console.log('Copied ' + finalSrc + ' to ' + targetDir);
-
                 copyIntoDirectory(srcDir, directory, copyToSubFolderName, overlayFolder);
             }
         }
