@@ -15,10 +15,6 @@ export class DataService {
     baseUrl: string = '/api/customers';
 
     constructor(private http: Http) { 
-        this.onInit();
-    }
-
-    onInit() {
 
     }
     

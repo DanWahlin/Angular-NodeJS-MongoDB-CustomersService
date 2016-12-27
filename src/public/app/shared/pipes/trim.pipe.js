@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var TrimPipe = (function () {
     function TrimPipe() {
     }
@@ -18,11 +18,11 @@ var TrimPipe = (function () {
         }
         return value.trim();
     };
-    TrimPipe = __decorate([
-        core_1.Pipe({ name: 'trim' }), 
-        __metadata('design:paramtypes', [])
-    ], TrimPipe);
     return TrimPipe;
 }());
+TrimPipe = __decorate([
+    core_1.Pipe({ name: 'trim' }),
+    __metadata("design:paramtypes", [])
+], TrimPipe);
 exports.TrimPipe = TrimPipe;
 //# sourceMappingURL=trim.pipe.js.map

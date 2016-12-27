@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var CapitalizePipe = (function () {
     function CapitalizePipe() {
     }
@@ -18,11 +18,11 @@ var CapitalizePipe = (function () {
         }
         return value;
     };
-    CapitalizePipe = __decorate([
-        core_1.Pipe({ name: 'capitalize' }), 
-        __metadata('design:paramtypes', [])
-    ], CapitalizePipe);
     return CapitalizePipe;
 }());
+CapitalizePipe = __decorate([
+    core_1.Pipe({ name: 'capitalize' }),
+    __metadata("design:paramtypes", [])
+], CapitalizePipe);
 exports.CapitalizePipe = CapitalizePipe;
 //# sourceMappingURL=capitalize.pipe.js.map

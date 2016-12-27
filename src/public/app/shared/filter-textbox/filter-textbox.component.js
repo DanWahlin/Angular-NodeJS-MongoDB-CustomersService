@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var FilterTextboxComponent = (function () {
     function FilterTextboxComponent() {
         this.model = { filter: null };
@@ -18,18 +18,18 @@ var FilterTextboxComponent = (function () {
         event.preventDefault();
         this.changed.emit(this.model.filter); //Raise changed event
     };
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', core_1.EventEmitter)
-    ], FilterTextboxComponent.prototype, "changed", void 0);
-    FilterTextboxComponent = __decorate([
-        core_1.Component({
-            selector: 'filter-textbox',
-            template: "\n    <form>\n         Filter:\n         <input type=\"text\" name=\"filter\"\n                [(ngModel)]=\"model.filter\" \n                (keyup)=\"filterChanged($event)\"  />\n    </form>\n  "
-        }), 
-        __metadata('design:paramtypes', [])
-    ], FilterTextboxComponent);
     return FilterTextboxComponent;
 }());
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], FilterTextboxComponent.prototype, "changed", void 0);
+FilterTextboxComponent = __decorate([
+    core_1.Component({
+        selector: 'filter-textbox',
+        template: "\n    <form>\n         Filter:\n         <input type=\"text\" name=\"filter\"\n                [(ngModel)]=\"model.filter\" \n                (keyup)=\"filterChanged($event)\"  />\n    </form>\n  "
+    }),
+    __metadata("design:paramtypes", [])
+], FilterTextboxComponent);
 exports.FilterTextboxComponent = FilterTextboxComponent;
 //# sourceMappingURL=filter-textbox.component.js.map

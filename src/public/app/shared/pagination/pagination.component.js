@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var PaginationComponent = (function () {
     function PaginationComponent() {
         this.pages = [];
@@ -78,27 +78,29 @@ var PaginationComponent = (function () {
         this.nextEnabled = this.currentPage < this.totalPages;
         this.pageChanged.emit(page);
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], PaginationComponent.prototype, "pageSize", null);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], PaginationComponent.prototype, "totalItems", null);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', core_1.EventEmitter)
-    ], PaginationComponent.prototype, "pageChanged", void 0);
-    PaginationComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'pagination',
-            templateUrl: 'pagination.component.html'
-        }), 
-        __metadata('design:paramtypes', [])
-    ], PaginationComponent);
     return PaginationComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number),
+    __metadata("design:paramtypes", [])
+], PaginationComponent.prototype, "pageSize", null);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number),
+    __metadata("design:paramtypes", [])
+], PaginationComponent.prototype, "totalItems", null);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], PaginationComponent.prototype, "pageChanged", void 0);
+PaginationComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'pagination',
+        templateUrl: 'pagination.component.html'
+    }),
+    __metadata("design:paramtypes", [])
+], PaginationComponent);
 exports.PaginationComponent = PaginationComponent;
 //# sourceMappingURL=pagination.component.js.map

@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var data_service_1 = require('../core/data.service');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var data_service_1 = require("../core/data.service");
 var CustomerEditComponent = (function () {
     function CustomerEditComponent(router, route, dataService) {
         this.router = router;
@@ -96,15 +96,17 @@ var CustomerEditComponent = (function () {
             }
         }, function (err) { return console.log(err); });
     };
-    CustomerEditComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'customer-edit',
-            templateUrl: 'customer-edit.component.html'
-        }), 
-        __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, data_service_1.DataService])
-    ], CustomerEditComponent);
     return CustomerEditComponent;
 }());
+CustomerEditComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'customer-edit',
+        templateUrl: 'customer-edit.component.html'
+    }),
+    __metadata("design:paramtypes", [router_1.Router,
+        router_1.ActivatedRoute,
+        data_service_1.DataService])
+], CustomerEditComponent);
 exports.CustomerEditComponent = CustomerEditComponent;
 //# sourceMappingURL=customer-edit.component.js.map

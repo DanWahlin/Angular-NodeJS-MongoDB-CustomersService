@@ -8,25 +8,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-var forms_1 = require('@angular/forms');
-var pagination_component_1 = require('./pagination/pagination.component');
-var capitalize_pipe_1 = require('./pipes/capitalize.pipe');
-var trim_pipe_1 = require('./pipes/trim.pipe');
-var filter_textbox_component_1 = require('./filter-textbox/filter-textbox.component');
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var forms_1 = require("@angular/forms");
+var pagination_component_1 = require("./pagination/pagination.component");
+var capitalize_pipe_1 = require("./pipes/capitalize.pipe");
+var trim_pipe_1 = require("./pipes/trim.pipe");
+var filter_textbox_component_1 = require("./filter-textbox/filter-textbox.component");
 var SharedModule = (function () {
     function SharedModule() {
     }
-    SharedModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule, forms_1.FormsModule, forms_1.ReactiveFormsModule],
-            declarations: [capitalize_pipe_1.CapitalizePipe, trim_pipe_1.TrimPipe, filter_textbox_component_1.FilterTextboxComponent, pagination_component_1.PaginationComponent],
-            exports: [common_1.CommonModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, capitalize_pipe_1.CapitalizePipe, trim_pipe_1.TrimPipe, filter_textbox_component_1.FilterTextboxComponent, pagination_component_1.PaginationComponent]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], SharedModule);
     return SharedModule;
 }());
+SharedModule = __decorate([
+    core_1.NgModule({
+        imports: [common_1.CommonModule, forms_1.FormsModule, forms_1.ReactiveFormsModule],
+        declarations: [capitalize_pipe_1.CapitalizePipe, trim_pipe_1.TrimPipe, filter_textbox_component_1.FilterTextboxComponent, pagination_component_1.PaginationComponent],
+        exports: [common_1.CommonModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, capitalize_pipe_1.CapitalizePipe, trim_pipe_1.TrimPipe, filter_textbox_component_1.FilterTextboxComponent, pagination_component_1.PaginationComponent]
+    }),
+    __metadata("design:paramtypes", [])
+], SharedModule);
 exports.SharedModule = SharedModule;
 //# sourceMappingURL=shared.module.js.map
