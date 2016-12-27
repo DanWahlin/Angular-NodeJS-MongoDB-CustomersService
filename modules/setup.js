@@ -4,8 +4,7 @@ var fse = require('fs-extra'),
     request = require('request'),
     url = require('url'),
     path = require('path'),
-    fs = require('fs'),
-    AdmZip = require('adm-zip');
+    fs = require('fs');
 
 function copyIntoDirectories(srcDir, startDir, copyToSubFolderName, dirsToIgnore, overlayFolder) {
     //Iterate through directories
@@ -15,13 +14,15 @@ function copyIntoDirectories(srcDir, startDir, copyToSubFolderName, dirsToIgnore
 
         if (stat.isDirectory()) {
             if (dirsToIgnore.indexOf(dir) === -1) { //Make sure the ignoreDirs aren't involved in the copy operations
-                var targetDir = directory + '/' + copyToSubFolderName, //Target directory src should be copied to
-                    overlayFolder = (overlayFolder) ? overlayFolder : 'Files';
-                    filesOverlaySrc = directory + '/' + overlayFolder, //If no srcDir is provided then we're overlaying lab files into the targetDir
-                    finalSrc = (srcDir) ? srcDir : filesOverlaySrc;
+                // var targetDir = directory + '/' + copyToSubFolderName, //Target directory src should be copied to
+                //     overlayFolder = (overlayFolder) ? overlayFolder : 'files';
+                //     filesOverlaySrc = directory + '/' + overlayFolder, //If no srcDir is provided then we're overlaying lab files into the targetDir
+                //     finalSrc = (srcDir) ? srcDir : filesOverlaySrc;
 
-                fse.copySync(finalSrc, targetDir);
-                console.log('Copied ' + finalSrc + ' to ' + targetDir);
+                // fse.copySync(finalSrc, targetDir);
+                // console.log('Copied ' + finalSrc + ' to ' + targetDir);
+
+                copyIntoDirectory(srcDir, directory, copyToSubFolderName, overlayFolder);
             }
         }
     });
@@ -29,7 +30,7 @@ function copyIntoDirectories(srcDir, startDir, copyToSubFolderName, dirsToIgnore
 
 function copyIntoDirectory(srcDir, startDir, copyToSubFolderName, overlayFolder) {
     var targetDir = startDir + '/' + copyToSubFolderName, //Target directory src should be copied to
-        overlayFolder = (overlayFolder) ? overlayFolder : 'Files',
+        overlayFolder = (overlayFolder) ? overlayFolder : 'files',
         filesOverlaySrc = startDir + '/' + overlayFolder, //If no srcDir is provided then we're overlaying lab files into the targetDir
         finalSrc = (srcDir) ? srcDir : filesOverlaySrc;
 
@@ -64,16 +65,20 @@ function downloadAndExtractProjects(callback) {
     });
 }
 
+var beginFolder = 'begin',
+    endFolder = 'end',
+    beginFiles = 'files/beginFiles',
+    endFiles = 'files/endFiles',
+    dirsToIgnore = [ 'node_modules', 'module1', 'module8'];
 
 
-    var beginFolder = 'begin',
-        endFolder = 'end',
-        beginFiles = 'files/beginFiles',
-        endFiles = 'files/endFiles';
+//Copy src folder into begin folder of each module
+console.log(`Copying ../src into modules`);
+copyIntoDirectories('../src', '.', beginFolder, dirsToIgnore, beginFiles);
 
-
-    //Copy src folder into begin folder of each module
-    copyIntoDirectories('./src', './', beginFolder, null, beginFiles);
+//Overlay files over begin folder
+console.log(`Overlaying code`);
+copyIntoDirectories(null, '.', beginFolder, dirsToIgnore, beginFiles);
 
 
 

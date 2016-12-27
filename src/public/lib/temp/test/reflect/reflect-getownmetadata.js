@@ -1,5 +1,6 @@
 // Reflect.getOwnMetadata ( metadataKey, target [, propertyKey] )
 // - https://github.com/jonathandturner/decorators/blob/master/specs/metadata.md#reflectgetownmetadata--metadatakey-target--propertykey-
+"use strict";
 require("../../Reflect");
 var assert = require("assert");
 function ReflectGetOwnMetadataInvalidTarget() {

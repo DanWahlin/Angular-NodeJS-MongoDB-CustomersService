@@ -10,7 +10,7 @@
         "spec": "2.2.0",
         "type": "version"
       },
-      "/Users/danwahlin/Dropbox/Projects/GitHub/Angular2-NodeJS-MongoDB-CustomersService"
+      "/Users/danwahlin/Dropbox/Projects/GitHub/Angular-NodeJS-MongoDB-CustomersService/src"
     ]
   ],
   "_from": "@angular/common@2.2.0",
@@ -44,7 +44,7 @@
   "_shasum": "b52686eafd71e053169ac0257f9135f9583247b6",
   "_shrinkwrap": null,
   "_spec": "@angular/common@2.2.0",
-  "_where": "/Users/danwahlin/Dropbox/Projects/GitHub/Angular2-NodeJS-MongoDB-CustomersService",
+  "_where": "/Users/danwahlin/Dropbox/Projects/GitHub/Angular-NodeJS-MongoDB-CustomersService/src",
   "author": {
     "name": "angular"
   },

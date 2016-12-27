@@ -10,23 +10,23 @@
         "spec": ">=0.1.8 <0.2.0",
         "type": "range"
       },
-      "/Users/danwahlin/Dropbox/Projects/GitHub/Angular2-NodeJS-MongoDB-CustomersService"
+      "/Users/danwahlin/Dropbox/Projects/GitHub/Angular-NodeJS-MongoDB-CustomersService/src"
     ]
   ],
   "_from": "reflect-metadata@>=0.1.8 <0.2.0",
-  "_id": "reflect-metadata@0.1.8",
+  "_id": "reflect-metadata@0.1.9",
   "_inCache": true,
   "_location": "/reflect-metadata",
-  "_nodeVersion": "6.0.0",
+  "_nodeVersion": "6.6.0",
   "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/reflect-metadata-0.1.8.tgz_1470784336772_0.628053993685171"
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/reflect-metadata-0.1.9.tgz_1482283162553_0.4231167398393154"
   },
   "_npmUser": {
     "name": "rbuckton",
     "email": "rbuckton@chronicles.org"
   },
-  "_npmVersion": "3.4.0",
+  "_npmVersion": "3.10.6",
   "_phantomChildren": {},
   "_requested": {
     "raw": "reflect-metadata@^0.1.8",
@@ -40,11 +40,11 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.8.tgz",
-  "_shasum": "72426d570b60776e3688968bd5ab9537a15cecf6",
+  "_resolved": "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.9.tgz",
+  "_shasum": "987238dc87a516895fe457f130435ffbd763a4d4",
   "_shrinkwrap": null,
   "_spec": "reflect-metadata@^0.1.8",
-  "_where": "/Users/danwahlin/Dropbox/Projects/GitHub/Angular2-NodeJS-MongoDB-CustomersService",
+  "_where": "/Users/danwahlin/Dropbox/Projects/GitHub/Angular-NodeJS-MongoDB-CustomersService/src",
   "author": {
     "name": "Ron Buckton",
     "email": "ron.buckton@microsoft.com",
@@ -56,14 +56,14 @@
   "dependencies": {},
   "description": "Polyfill for Metadata Reflection API",
   "devDependencies": {
-    "typescript": "^1.7.5"
+    "typescript": "^2.1.4"
   },
   "directories": {},
   "dist": {
-    "shasum": "72426d570b60776e3688968bd5ab9537a15cecf6",
-    "tarball": "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.8.tgz"
+    "shasum": "987238dc87a516895fe457f130435ffbd763a4d4",
+    "tarball": "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.9.tgz"
   },
-  "gitHead": "d737a908100aa8ca7f083f815f06875cb80a217e",
+  "gitHead": "c72bf74270e455d054cb1bcce46a28ceb15c392f",
   "homepage": "http://rbuckton.github.io/ReflectDecorators",
   "keywords": [
     "decorator",
@@ -98,9 +98,9 @@
     "prepublish": "npm run test",
     "test": "npm run build & npm run build-test & node ./temp/test/run.js"
   },
+  "types": "index.d.ts",
   "typescript": {
     "definition": "Reflect.d.ts"
   },
-  "typings": "typings.d.ts",
-  "version": "0.1.8"
+  "version": "0.1.9"
 }

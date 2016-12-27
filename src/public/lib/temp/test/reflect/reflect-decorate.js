@@ -1,4 +1,5 @@
 // Reflect.decorate ( decorators, target [, propertyKey [, descriptor] ] )
+"use strict";
 require("../../Reflect");
 var assert = require("assert");
 function ReflectDecorateThrowsIfDecoratorsArgumentNotArrayForFunctionOverload() {
@@ -99,7 +100,7 @@ function ReflectDecoratorPipelineForPropertyOverload() {
     ];
     var target = {};
     var result = Reflect.decorate(decorators, target, "name", undefined);
-    assert.strictEqual(result, undefined);
+    assert.strictEqual(result, A);
 }
 exports.ReflectDecoratorPipelineForPropertyOverload = ReflectDecoratorPipelineForPropertyOverload;
 function ReflectDecoratorPipelineForPropertyDescriptorOverload() {
