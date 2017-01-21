@@ -4,7 +4,8 @@ var fse = require('fs-extra'),
     request = require('request'),
     url = require('url'),
     path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    AdmZip = require('adm-zip');
 
 function copyIntoDirectories(srcDir, startDir, copyToSubFolderName, dirsToIgnore, overlayFolder) {
     //Iterate through directories
