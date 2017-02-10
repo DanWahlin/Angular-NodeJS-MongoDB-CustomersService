@@ -11,9 +11,15 @@ class Database {
         mongoose.connect(connectionString);
         connection = mongoose.connection;
         mongoose.Promise = global.Promise;
-        mongoose.connection.on('open', () => {
+
+        mongoose.connection.on('error', (err) => {
+            console.log('Error connecting to MongoDB: ' + err);
+            callback(err, false);
+        });
+        
+        mongoose.connection.once('open', () => {
             console.log('We have connected to mongodb');
-            callback();
+            callback(null, true);
         });
 
     }

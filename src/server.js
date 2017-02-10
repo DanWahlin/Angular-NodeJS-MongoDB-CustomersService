@@ -52,14 +52,14 @@ class Server {
         app.use(cookieParser());
         app.use(csrf({ cookie: true }));
 
-        app.use(function (req, res, next) {
+        app.use((req, res, next) => {
             var csrfToken = req.csrfToken();
             res.locals._csrf = csrfToken;
             res.cookie('XSRF-TOKEN', csrfToken);
             next();
         });
 
-        process.on('uncaughtException', function (err) {
+        process.on('uncaughtException', (err) => {
             if (err) console.log(err, err.stack);
         });
     }
@@ -69,20 +69,20 @@ class Server {
             require("readline").createInterface({
                 input: process.stdin,
                 output: process.stdout
-            }).on("SIGINT", function () {
+            }).on("SIGINT", () => {
                 console.log('SIGINT: Closing MongoDB connection');
                 database.close();
             });
         }
 
-        process.on('SIGINT', function() {
+        process.on('SIGINT', () => {
             console.log('SIGINT: Closing MongoDB connection');
             database.close();
         });
     }
 
     initDbSeeder() {
-        database.open(function() {
+        database.open(() => {
             //Set NODE_ENV to 'development' and uncomment the following if to only run
             //the seeder when in dev mode
             //if (process.env.NODE_ENV === 'development') {
@@ -96,7 +96,7 @@ class Server {
         router.load(app, './controllers');
 
         // redirect all others to the index (HTML5 history)
-        app.all('/*', function(req, res) {
+        app.all('/*', (req, res) => {
             res.sendFile(__dirname + '/public/index.html');
         });
     }
