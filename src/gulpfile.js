@@ -33,7 +33,6 @@ gulp.task('copy:vendor', function() {
   return gulp.src([
       nodeModulesPath + '/core-js/client/**/*',
       nodeModulesPath + '/zone.js/dist/zone.js',
-      nodeModulesPath + '/reflect-metadata/**/*',
       nodeModulesPath + '/systemjs/dist/system-polyfills.js',
       nodeModulesPath + '/systemjs/dist/system.src.js'
     ])
