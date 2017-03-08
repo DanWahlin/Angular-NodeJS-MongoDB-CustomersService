@@ -12,18 +12,12 @@ import { ICustomer, IState } from '../shared/interfaces';
 export class CustomerEditComponent implements OnInit {
 
   customer: ICustomer = {
-    _id: '',
     firstName: '',
     lastName: '',
     gender: '',
     address: '',
     email: '',
     city: '',
-    state: {
-        abbreviation: '',
-        name: ''
-    },
-    stateId: 0,
     zip: 0
   };
   states: IState[];

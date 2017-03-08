@@ -15,14 +15,12 @@ export class CustomerEditReactiveComponent implements OnInit {
 
   customerForm: FormGroup;
   customer: ICustomer = {
-    _id: '',
     firstName: '',
     lastName: '',
     gender: '',
     address: '',
     email: '',
     city: '',
-    stateId: 0,
     zip: 0
   };
   states: IState[];
