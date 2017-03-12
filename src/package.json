@@ -52,7 +52,6 @@
         "gulp-sass": "^2.3.2",
         "gulp-uglify": "^2.0.0",
         "run-sequence": "^1.2.2",
-        "@types/core-js": "0.9.35",
         "@types/node": "7.0.5"
     }
 }
