@@ -12,19 +12,19 @@
         "start": "concurrently \"npm run tsc:w\" \"nodemon server.js\""
     },
     "dependencies": {
-        "@angular/common": "2.4.9",
-        "@angular/compiler": "2.4.9",
-        "@angular/core": "2.4.9",
-        "@angular/forms": "2.4.9",
-        "@angular/http": "2.4.9",
-        "@angular/platform-browser": "2.4.9",
-        "@angular/platform-browser-dynamic": "2.4.9",
-        "@angular/router": "3.4.9",
-        "@angular/upgrade": "2.4.9",
-        "systemjs": "0.20.9",
+        "@angular/common": "4.0.0",
+        "@angular/compiler": "4.0.0",
+        "@angular/core": "4.0.0",
+        "@angular/forms": "4.0.0",
+        "@angular/http": "4.0.0",
+        "@angular/platform-browser": "4.0.0",
+        "@angular/platform-browser-dynamic": "4.0.0",
+        "@angular/router": "4.0.0",
+        "@angular/upgrade": "4.0.0",
+        "systemjs": "0.19.47",
         "core-js": "2.4.1",
         "rxjs": "5.2.0",
-        "zone.js": "0.7.4",
+        "zone.js": "0.8.5",
         "cookie-parser": "^1.4.3",
         "body-parser": "^1.15.2",
         "csurf": "^1.9.0",
@@ -38,7 +38,11 @@
         "hbs": "~4.0.1",
         "mongoose": "^4.6.8",
         "morgan": "~1.7.0",
-        "serve-favicon": "~2.3.2"
+        "serve-favicon": "~2.3.2",
+        "@angular/compiler-cli": "4.0.0",
+        "@angular/platform-server": "4.0.0",
+        "@angular/tsc-wrapped": "4.0.0",
+        "@angular/animations": "4.0.0"
     },
     "devDependencies": {
         "concurrently": "3.4.0",
@@ -52,6 +56,6 @@
         "gulp-sass": "^2.3.2",
         "gulp-uglify": "^2.0.0",
         "run-sequence": "^1.2.2",
-        "@types/node": "7.0.5"
+        "@types/node": "7.0.11"
     }
 }
