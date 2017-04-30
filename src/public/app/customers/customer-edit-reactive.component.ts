@@ -47,9 +47,7 @@ export class CustomerEditReactiveComponent implements OnInit {
   getCustomer(id: string) {
       this.dataService.getCustomer(id)
         .subscribe((customer: ICustomer) => {
-          //Quick and dirty clone used in case user cancels out of form
-          const cust = JSON.stringify(customer);
-          this.customer = JSON.parse(cust);
+          this.customer = customer;
           this.buildForm();
         },
         (err) => console.log(err));

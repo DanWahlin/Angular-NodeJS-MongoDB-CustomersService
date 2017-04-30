@@ -42,9 +42,7 @@ export class CustomerEditComponent implements OnInit {
   getCustomer(id: string) {
       this.dataService.getCustomer(id)
         .subscribe((customer: ICustomer) => {
-          //Quick and dirty clone used in case user cancels out of form
-          const cust = JSON.stringify(customer);
-          this.customer = JSON.parse(cust);
+          this.customer = customer;
         },
         (err: any) => console.log(err));
   }
