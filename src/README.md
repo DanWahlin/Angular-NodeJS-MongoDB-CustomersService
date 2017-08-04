@@ -1,26 +1,26 @@
-# Angular 2, NodeJS, MongoDB Customers Service
+# Angular, NodeJS, MongoDB Customers Service
 
-This project provides a look at getting started using Angular 2 Http functionality and how it can be used
+This project provides a look at getting started using Angular Http functionality and how it can be used
 to call a Node.js RESTful service.  
 
-## Angular 2 Concepts Covered
+## Angular Concepts Covered
 
 * Using TypeScript classes and modules
 * Modules are loaded with System.js
 * Using Custom Components
 * Using the Http object for Ajax calls along with RxJS observables
 * Performing GET, PUT, POST and DELETE requests to the server
-* Working with Angular 2 service classes for Ajax calls
-* Using Angular 2 databinding and built-in directives
+* Working with Angular service classes for Ajax calls
+* Using Angular databinding and built-in directives
 
 ## Software Requirements To Run Locally (there's a Docker option below as well)
 
-* Node.js 6.5.0 or higher
+* Node.js 6.10 or higher
 * MongoDB 3.2 or higher
 
 ### Running the Application Locally
 
-1. Install Node.js (6.5 or higher) and MongoDB (3.2 or higher) on your dev box
+1. Install Node.js (6.10 or higher) and MongoDB (3.2 or higher) on your dev box
 
     * Node.js: https://nodejs.org
     * MongoDB: https://docs.mongodb.com/manual/installation
