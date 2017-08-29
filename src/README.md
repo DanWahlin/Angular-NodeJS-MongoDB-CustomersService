@@ -41,7 +41,7 @@ to call a Node.js RESTful service.
 
 ## Running the Application with Docker
 
-1. Install Node.js (6.5 or higher) and Docker for Mac/Windows or Docker Toolbox - https://www.docker.com/products/overview
+1. Install Node.js (6.10 or higher) and Docker for Mac/Windows or Docker Toolbox - https://www.docker.com/products/overview
 
 1. Open `config/config.development.json` and change the host from `localhost` to `mongodb`
 

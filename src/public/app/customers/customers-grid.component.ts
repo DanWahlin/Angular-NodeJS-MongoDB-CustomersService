@@ -5,9 +5,8 @@ import { Sorter } from '../core/sorter';
 import { TrackByService } from '../core/trackby.service';
 
 @Component({ 
-  moduleId: module.id,
   selector: 'customers-grid', 
-  templateUrl: 'customers-grid.component.html',
+  templateUrl: './customers-grid.component.html',
   //When using OnPush detectors, then the framework will check an OnPush 
   //component when any of its input properties changes, when it fires 
   //an event, or when an observable fires an event ~ Victor Savkin (Angular Team)
