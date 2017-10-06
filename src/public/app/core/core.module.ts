@@ -1,4 +1,8 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
+//If you're on Angular 4.3+ check out core.dule.ts.httpclient and data.service.ts.httpclient
+//They use the new HttpClientModule and HttpClient service
+//To use them simplify rename this file and data.service.ts to another name and remove
+//".httpclient" from the other 2 files
 import { HttpModule, XSRFStrategy, CookieXSRFStrategy } from '@angular/http';
 
 import { DataService } from './data.service';
