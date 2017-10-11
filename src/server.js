@@ -53,7 +53,7 @@ class Server {
         app.use(csrf({ cookie: true }));
 
         app.use((req, res, next) => {
-            var csrfToken = req.csrfToken();
+            let csrfToken = req.csrfToken();
             res.locals._csrf = csrfToken;
             res.cookie('XSRF-TOKEN', csrfToken);
             next();
@@ -103,4 +103,4 @@ class Server {
 
 }
 
-var server = new Server();
+let server = new Server();

@@ -8,7 +8,7 @@ class CustomersRepository {
     getCustomers(callback) {
         console.log('*** CustomersRepository.getCustomers');
         Customer.count((err, custsCount) => {
-            var count = custsCount;
+            let count = custsCount;
             console.log(`Customers count: ${count}`);
 
             Customer.find({}, (err, customers) => {
@@ -28,7 +28,7 @@ class CustomersRepository {
     getPagedCustomers(skip, top, callback) {
         console.log('*** CustomersRepository.getPagedCustomers');
         Customer.count((err, custsCount) => {
-            var count = custsCount;
+            let count = custsCount;
             console.log(`Skip: ${skip} Top: ${top}`);
             console.log(`Customers count: ${count}`);
 
@@ -54,7 +54,7 @@ class CustomersRepository {
     getCustomersSummary(skip, top, callback) {
         console.log('*** CustomersRepository.getCustomersSummary');
         Customer.count((err, custsCount) => {
-            var count = custsCount;
+            let count = custsCount;
             console.log(`Customers count: ${count}`);
 
             Customer.find({}, { '_id': 0, 'firstName': 1, 'lastName': 1, 'city': 1, 'state': 1, 'orderCount': 1, 'gender': 1 })
@@ -86,8 +86,8 @@ class CustomersRepository {
     insertCustomer(body, state, callback) {
         console.log('*** CustomersRepository.insertCustomer');
         console.log(state);
-        var customer = new Customer();
-        var newState = { 'id': state[0].id, 'abbreviation': state[0].abbreviation, 'name': state[0].name }
+        let customer = new Customer();
+        let newState = { 'id': state[0].id, 'abbreviation': state[0].abbreviation, 'name': state[0].name }
         console.log(body);
 
         customer.firstName = body.firstName;
@@ -113,7 +113,7 @@ class CustomersRepository {
     updateCustomer(id, body, state, callback) {
         console.log('*** CustomersRepository.editCustomer');
 
-        var state = { 'id': state[0].id, 'abbreviation': state[0].abbreviation, 'name': state[0].name }
+        let stateObj = { 'id': state[0].id, 'abbreviation': state[0].abbreviation, 'name': state[0].name }
 
         Customer.findById(id, (err, customer)  => {
             if (err) { 
@@ -126,8 +126,8 @@ class CustomersRepository {
             customer.email = body.email || customer.email;
             customer.address = body.address || customer.address;
             customer.city = body.city || customer.city;
-            customer.state = state;
-            customer.stateId = state.id;
+            customer.state = stateObj;
+            customer.stateId = stateObj.id;
             customer.zip = body.zip || customer.zip;
             customer.gender = body.gender || customer.gender;
 

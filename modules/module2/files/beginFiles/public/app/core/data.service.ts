@@ -1,30 +1,31 @@
 import { Injectable } from '@angular/core';
 
-//Using the new HttpClientModule now. If you're still on < Angular 4.3 see the 
-//data.service.ts file instead (simplify rename it to the name 
-//of this file to use it instead)
-import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+//Using the newer HttpClientModule now. 
+//This is the pre-Angular 4.3 Http option. If you're not on Angular 4.3 yet,
+//simplify rename this file to data.service.ts to use it instead.
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 
+//Grab everything with import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map'; 
 import 'rxjs/add/operator/catch';
 
-import { ICustomer, IOrder, IState, IPagedResults, ICustomerResponse } from '../shared/interfaces';
+import { ICustomer, IOrder, IState, IPagedResults } from '../shared/interfaces';
 
 @Injectable()
 export class DataService {
   
     baseUrl: string = '/api/customers';
-    baseStatesUrl: string = '/api/states'
 
-    constructor(private http: HttpClient) { 
+    constructor(private http: Http) { 
 
     }
     
     getCustomers() : Observable<ICustomer[]> {
-        return this.http.get<ICustomer[]>(this.baseUrl)
-                   .map((customers: ICustomer[]) => {
+        return this.http.get(this.baseUrl)
+                   .map((res: Response) => {
+                       let customers = res.json();
                        this.calculateCustomersOrderTotal(customers);
                        return customers;
                    })
@@ -32,11 +33,10 @@ export class DataService {
     }
 
     getCustomersPage(page: number, pageSize: number) : Observable<IPagedResults<ICustomer[]>> {
-        return this.http.get<ICustomer[]>(`${this.baseUrl}/page/${page}/${pageSize}`, {observe: 'response'})
-                    .map((res) => {
-                        //Need to observe response in order to get to this header (see {observe: 'response'} above)
+        return this.http.get(`${this.baseUrl}/page/${page}/${pageSize}`)
+                    .map((res: Response) => {
                         const totalRecords = +res.headers.get('x-inlinecount');
-                        let customers = res.body as ICustomer[];
+                        let customers = res.json();
                         this.calculateCustomersOrderTotal(customers);
                         return {
                             results: customers,
@@ -47,13 +47,15 @@ export class DataService {
     }
     
     getCustomer(id: string) : Observable<ICustomer> {
-        return this.http.get<ICustomer>(this.baseUrl + '/' + id)
-                   .catch(this.handleError);
+        return this.http.get(this.baseUrl + '/' + id)
+                    .map((res: Response) => res.json())
+                    .catch(this.handleError);
     }
 
     insertCustomer(customer: ICustomer) : Observable<ICustomer> {
-        return this.http.post<ICustomerResponse>(this.baseUrl, customer)
-                   .map((data) => {
+        return this.http.post(this.baseUrl, customer)
+                   .map((res: Response) => {
+                       const data = res.json();
                        console.log('insertCustomer status: ' + data.status);
                        return data.customer;
                    })
@@ -61,8 +63,9 @@ export class DataService {
     }
    
     updateCustomer(customer: ICustomer) : Observable<ICustomer> {
-        return this.http.put<ICustomerResponse>(this.baseUrl + '/' + customer._id, customer) 
-                   .map((data) => {
+        return this.http.put(this.baseUrl + '/' + customer._id, customer) 
+                   .map((res: Response) => {
+                       const data = res.json();
                        console.log('updateCustomer status: ' + data.status);
                        return data.customer;
                    })
@@ -70,12 +73,24 @@ export class DataService {
     }
 
     deleteCustomer(id: string) : Observable<boolean> {
-        return this.http.delete<boolean>(this.baseUrl + '/' + id)
+        return this.http.delete(this.baseUrl + '/' + id)
+                   .map((res: Response) => res.json().status)
                    .catch(this.handleError);
     }
-   
+
+    //Not used but could be called to pass "options" (3rd parameter) to 
+    //appropriate POST/PUT/DELETE calls made with http
+    getRequestOptions() {
+        const csrfToken = ''; //would retrieve from cookie or from page
+        const options = new RequestOptions({
+            headers: new Headers({ 'x-xsrf-token': csrfToken })
+        });
+        return options;
+    }
+    
     getStates(): Observable<IState[]> {
-        return this.http.get<IState[]>(this.baseStatesUrl)
+        return this.http.get('/api/states')
+                   .map((res: Response) => res.json())
                    .catch(this.handleError);
     }
 
@@ -91,10 +106,15 @@ export class DataService {
         }
     }
     
-    private handleError(error: HttpErrorResponse) {
+    private handleError(error: any) {
         console.error('server error:', error); 
-        if (error.error instanceof Error) {
-          let errMessage = error.error.message;
+        if (error instanceof Response) {
+          let errMessage = '';
+          try {
+            errMessage = error.json().error;
+          } catch(err) {
+            errMessage = error.statusText;
+          }
           return Observable.throw(errMessage);
           // Use the following instead if using lite-server
           //return Observable.throw(err.text() || 'backend server error');

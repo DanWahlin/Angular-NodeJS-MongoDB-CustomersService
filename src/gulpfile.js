@@ -34,7 +34,9 @@ gulp.task('copy:vendor', function() {
       nodeModulesPath + '/core-js/client/**/*',
       nodeModulesPath + '/zone.js/dist/zone.js',
       nodeModulesPath + '/systemjs/dist/system-polyfills.js',
-      nodeModulesPath + '/systemjs/dist/system.src.js'
+      nodeModulesPath + '/systemjs/dist/system.src.js',
+      nodeModulesPath + '/systemjs/dist/system.src.js.map',
+      nodeModulesPath + '/tslib/tslib.js'
     ])
     .pipe(gulp.dest(libPath));
 });
@@ -47,16 +49,6 @@ gulp.task('copy:rxjs', function() {
 });
 
 gulp.task('copy:angular', function() {
-//   return gulp.src([
-//       'node_modules/@angular/common/bundles/common.umd.js',
-//       'node_modules/@angular/compiler/bundles/compiler.umd.js',
-//       'node_modules/@angular/core/bundles/core.umd.js',
-//       'node_modules/@angular/forms/bundles/forms.umd.js',
-//       'node_modules/@angular/http/bundles/http.umd.js',      
-//       'node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
-//       'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
-//       'node_modules/@angular/router/bundles/router.umd.js',
-//     ])
     return gulp.src([nodeModulesPath + '/@angular/**/*']).pipe(gulp.dest(libPath + '/@angular'));
 });
 

@@ -6,4 +6,4 @@ at [Pluralsight.com](https://www.pluralsight.com/courses/angular-nodejs-restful-
 Requirements:
 
 * MongoDB 3.2 or higher
-* Node.js 6.5 or higher
+* Node.js 6.10 or higher

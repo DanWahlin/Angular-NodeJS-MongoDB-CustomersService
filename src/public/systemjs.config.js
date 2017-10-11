@@ -4,7 +4,8 @@
   var map = {
     'app':        'app', // 'dist',
     '@angular':   'lib/@angular',
-    'rxjs':       'lib/rxjs'
+    'rxjs':       'lib/rxjs',
+    'tslib':      'lib'
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -18,7 +19,9 @@
         }
       }
     },
-    'rxjs':                       { defaultExtension: 'js' }
+    'rxjs':                 { defaultExtension: 'js' },
+    'tslib':                { main: 'tslib', defaultExtension: 'js' },
+    '@angular/common/http': { main: '../bundles/common-http.umd.js', defaultExtension: 'js' }
   };
 
   var ngPackageNames = [
@@ -40,7 +43,7 @@
 
   // Bundled (~40 requests):
   function packUmd(pkgName) {
-    packages['@angular/'+pkgName] = { main: '/bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
+    packages['@angular/'+pkgName] = { main: 'bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
   }
 
   // Most environments should use UMD; some (Karma) need the individual index files
