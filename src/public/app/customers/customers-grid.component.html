@@ -23,7 +23,7 @@
                             <td>{{ customer.address }}</td>
                             <td>{{ customer.city | trim }}</td>
                             <td>{{ customer.state.name }}</td>
-                            <td>{{ customer.orderTotal | currency:'USD':true }}</td>
+                            <td>{{ customer.orderTotal | currency:'USD':'symbol' }}</td>
                         </tr>
                         <tr *ngIf="!customers.length">
                             <td>&nbsp;</td>
