@@ -1,12 +1,13 @@
-#Useful Docker Commands
+# Useful Docker Commands
+    
 
-##Docker Machine
+## Docker Machine
 
 - `docker-machine start` - Start VM
 - `docker-machine stop` - Stop VM
 - `docker-machine env` - Display Docker client setup commands
 
-##Docker Client
+## Docker Client
 
 - `docker <command> --help` - Get help on a specific command
 - `docker pull <Name of Image>` - Pull image from Docker Hub
